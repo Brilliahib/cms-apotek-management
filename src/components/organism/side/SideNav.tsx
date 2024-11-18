@@ -16,6 +16,7 @@ import {
   CalendarCheck,
   ShoppingCart,
   ShoppingBag,
+  Pill,
 } from "lucide-react";
 import { Session } from "next-auth";
 import SideNavL from "@/components/atoms/sidenav/SideNavL";
@@ -48,18 +49,24 @@ export default function Sidenav({ children, session }: SidenavProps) {
             },
             {
               href: "/dashboard/admin/purchases",
-              label: "Purchase",
+              label: "Pembelian",
               icon: ShoppingCart,
               active: pathname.startsWith("/dashboard/admin/purchases"),
             },
             {
               href: "/dashboard/sales",
-              label: "Sale",
+              label: "Penjualan",
               icon: ShoppingBag,
               active: pathname.startsWith("/dashboard/sales"),
             },
+            {
+              href: "/dashboard/medicines",
+              label: "Obat",
+              icon: Pill,
+              active: pathname.startsWith("/dashboard/medicines"),
+            },
           ]
-        : session?.user.role === "daycare"
+        : session?.user.role === "supplier"
         ? [
             {
               href: "/dashboard/daycare",
@@ -74,21 +81,6 @@ export default function Sidenav({ children, session }: SidenavProps) {
               active: pathname.startsWith("/dashboard/daycare/nannies"),
             },
           ]
-        : session?.user.role === "nannies"
-        ? [
-            {
-              href: "/dashboard/nannies",
-              label: "Dashboard",
-              icon: LayoutDashboardIcon,
-              active: pathname === "/dashboard/nannies",
-            },
-            {
-              href: "/dashboard/nannies/bookings",
-              label: "Booking",
-              icon: CalendarCheck,
-              active: pathname.startsWith("/dashboard/nannies/bookings"),
-            },
-          ]
         : [
             {
               href: "/dashboard",
@@ -97,10 +89,16 @@ export default function Sidenav({ children, session }: SidenavProps) {
               active: pathname === "/dashboard",
             },
             {
-              href: "/dashboard/bookings",
-              label: "Booking",
-              icon: CalendarCheck,
-              active: pathname.startsWith("/dashboard/bookings"),
+              href: "/dashboard/sales",
+              label: "Penjualan",
+              icon: ShoppingBag,
+              active: pathname.startsWith("/dashboard/sales"),
+            },
+            {
+              href: "/dashboard/medicines",
+              label: "Obat",
+              icon: Pill,
+              active: pathname.startsWith("/dashboard/medicines"),
             },
           ]),
       // {

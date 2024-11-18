@@ -1,6 +1,5 @@
 import LoginForm from "@/components/organism/auth/AuthLoginForm";
 import { defineMetadata } from "@/lib/metadata";
-import Image from "next/image";
 
 export const metadata = defineMetadata({
   title: "Login",

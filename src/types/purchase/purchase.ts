@@ -1,6 +1,6 @@
 import { Medicine } from "../medicine/medicine";
 
-export interface Expenses {
+export interface Purchase {
   id: number;
   admin_id: number;
   medicine_id: number;

@@ -107,12 +107,6 @@ export default function Sidenav({ children, session }: SidenavProps) {
       //   active: pathname.startsWith("/dashboard/messages"),
       //   icon: MessageCircleMore,
       // },
-      {
-        href: "/dashboard/settings",
-        label: "Setting",
-        active: pathname.startsWith("/dashboard/settings"),
-        icon: Settings2Icon,
-      },
     ],
     [session, pathname]
   );

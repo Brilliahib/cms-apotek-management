@@ -11,9 +11,9 @@ import {
 import Link from "next/link";
 import { Eye, SquarePen } from "lucide-react";
 import { convertRupiah } from "@/utils/convertRupiah";
-import { Sales } from "@/types/sales/sales";
+import { Medicine } from "@/types/medicine/medicine";
 
-export const salesColumns: ColumnDef<Sales>[] = [
+export const medicineColumns: ColumnDef<Medicine>[] = [
   {
     accessorKey: "index",
     header: "No",
@@ -28,43 +28,43 @@ export const salesColumns: ColumnDef<Sales>[] = [
       const data = row.original;
       return (
         <p suppressHydrationWarning className="md:line-clamp-2 line-clamp-1">
-          {data.medicine.name}
+          {data.name}
         </p>
       );
     },
   },
   {
-    accessorKey: "quantity",
-    header: "Kuantitas/Banyak",
+    accessorKey: "stock",
+    header: "Stok",
     cell: ({ row }) => {
       const data = row.original;
       return (
         <p suppressHydrationWarning className="md:line-clamp-2 line-clamp-1">
-          {data.quantity}
+          {data.stock}
         </p>
       );
     },
   },
   {
     accessorKey: "medicine",
-    header: "Harga Satuan",
+    header: "Harga Beli",
     cell: ({ row }) => {
       const data = row.original;
       return (
         <p suppressHydrationWarning className="md:line-clamp-2 line-clamp-1">
-          {data ? convertRupiah(data?.medicine.price) : "Loading..."}
+          {data ? convertRupiah(data?.price) : "Loading..."}
         </p>
       );
     },
   },
   {
-    accessorKey: "total_price",
-    header: "Harga Total",
+    accessorKey: "pharmacy_price",
+    header: "Harga Jual",
     cell: ({ row }) => {
       const data = row.original;
       return (
         <p suppressHydrationWarning className="md:line-clamp-2 line-clamp-1">
-          {data ? convertRupiah(data?.total_price) : "Loading..."}
+          {data ? convertRupiah(data?.pharmacy_price) : "Loading..."}
         </p>
       );
     },
@@ -80,7 +80,7 @@ export const salesColumns: ColumnDef<Sales>[] = [
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Link
-              href={`/dashboard/admin/sales/${data.id}/edit`}
+              href={`/dashboard/admin/medicines/${data.id}/edit`}
               className="flex items-center text-gray-700"
             >
               <SquarePen className="h-4 w-4" />
@@ -89,7 +89,7 @@ export const salesColumns: ColumnDef<Sales>[] = [
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link
-              href={`/dashboard/admin/sales/${data.id}`}
+              href={`/dashboard/admin/medicines/${data.id}`}
               className="flex items-center text-gray-700"
             >
               <Eye className="h-4 w-4" />

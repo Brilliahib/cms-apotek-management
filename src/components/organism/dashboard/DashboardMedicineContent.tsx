@@ -1,25 +1,30 @@
 "use client";
 
+import { medicineColumns } from "@/components/atoms/datacolumn/DataMedicine";
 import { salesColumns } from "@/components/atoms/datacolumn/DataSales";
 import SearchInput from "@/components/atoms/search/SearchInput";
 import { DataTable } from "@/components/molecules/datatable/DataTable";
 import { Button } from "@/components/ui/button";
+import { useGetAllMedicines } from "@/http/medicines/get-all-medicine";
 import { useGetAllSales } from "@/http/sales/get-all-sales";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function DashboardSalesContent() {
+export default function DashboardMedicineContent() {
   const { data: session, status } = useSession();
-  const { data, isPending } = useGetAllSales(session?.access_token as string, {
-    enabled: status === "authenticated",
-  });
+  const { data, isPending } = useGetAllMedicines(
+    session?.access_token as string,
+    {
+      enabled: status === "authenticated",
+    }
+  );
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredData =
-    data?.data.filter((sales) =>
-      sales.medicine.name.toLowerCase().includes(searchQuery.toLowerCase())
+    data?.data.filter((medicine) =>
+      medicine.name.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
   return (
@@ -29,13 +34,13 @@ export default function DashboardSalesContent() {
           <SearchInput
             onSearch={setSearchQuery}
             className="min-w-[250px]"
-            props="Cari penjualan..."
+            props="Cari obat..."
           />
           <Link href={"/dashboard/admin/users/create"}>
-            <Button>Buat Penjualan</Button>
+            <Button>Beli Obat</Button>
           </Link>
         </div>
-        <DataTable columns={salesColumns} data={filteredData} />
+        <DataTable columns={medicineColumns} data={filteredData} />
       </div>
     </>
   );

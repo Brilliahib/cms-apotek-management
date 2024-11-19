@@ -1,12 +1,12 @@
 "use client";
 
 import { purchaseColumns } from "@/components/atoms/datacolumn/DataPurchase";
+import DialogCreatePurchase from "@/components/atoms/dialog/DialogCreatePurchase";
 import SearchInput from "@/components/atoms/search/SearchInput";
 import { DataTable } from "@/components/molecules/datatable/DataTable";
 import { Button } from "@/components/ui/button";
 import { useGetAllPurchase } from "@/http/purchases/get-all-purchase";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function DashboardPurchasesAdminContent() {
@@ -25,6 +25,13 @@ export default function DashboardPurchasesAdminContent() {
       purchase.medicine.name.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
+  const [DialogCreatePurchaseOpen, setDialogCreatePurchaseOpen] =
+    useState(false);
+
+  const handlePurchaseDialogOpen = () => {
+    setDialogCreatePurchaseOpen(true);
+  };
+
   return (
     <>
       <div className="py-6 md:space-y-6 space-y-4">
@@ -34,12 +41,14 @@ export default function DashboardPurchasesAdminContent() {
             className="min-w-[250px]"
             props="Cari pembelian..."
           />
-          <Link href={"/dashboard/admin/users/create"}>
-            <Button>Beli Obat</Button>
-          </Link>
+          <Button onClick={handlePurchaseDialogOpen}>Buat Pembelian</Button>
         </div>
         <DataTable columns={purchaseColumns} data={filteredData} />
       </div>
+      <DialogCreatePurchase
+        open={DialogCreatePurchaseOpen}
+        setOpen={setDialogCreatePurchaseOpen}
+      />
     </>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Link as NavLink } from "@/components/organism/side/SideNav";
 import SideNavLink from "./SideNavLink";
+import { Pill } from "lucide-react";
 
 interface SideNavLProps {
   links: NavLink[];
@@ -17,7 +18,10 @@ export default function SideNavL({ links }: SideNavLProps) {
             href="/"
             className="flex text-left justify-center items-center gap-2 font-semibold"
           >
-            <h1 className="font-bold text-2xl">Apotek Management</h1>
+            <div className="p-2 rounded-full bg-primary">
+              <Pill className="text-white h-4 w-4" />
+            </div>
+            <h1>Apotek</h1>
           </Link>
         </div>
         <div className="flex-1">

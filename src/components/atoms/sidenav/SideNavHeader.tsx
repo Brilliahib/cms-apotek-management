@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { House, LogOut, Menu, Settings } from "lucide-react";
+import { House, LogOut, Menu, Pill, Settings } from "lucide-react";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 
@@ -50,12 +50,10 @@ export default function SideNavHeader({ session, links }: SideNavHeaderProps) {
                 href="/"
                 className="flex text-left justify-center items-center gap-2 font-semibold"
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="Charing Cub"
-                  width={100}
-                  height={100}
-                />
+                <div className="p-2 rounded-full bg-primary">
+                  <Pill className="text-white h-4 w-4" />
+                </div>
+                <h1>Apotek</h1>
               </Link>
             </div>
             <nav className="grid-gap-2 space-y-4 font-poppins">

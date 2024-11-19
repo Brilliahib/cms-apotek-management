@@ -30,15 +30,12 @@ export default function DashboardMedicineContent() {
   return (
     <>
       <div className="py-6 md:space-y-6 space-y-4">
-        <div className="flex justify-between">
+        <div className="flex md:flex-row flex-col gap-4 justify-between">
           <SearchInput
             onSearch={setSearchQuery}
             className="min-w-[250px]"
             props="Cari obat..."
           />
-          <Link href={"/dashboard/admin/users/create"}>
-            <Button>Beli Obat</Button>
-          </Link>
         </div>
         <DataTable columns={medicineColumns} data={filteredData} />
       </div>

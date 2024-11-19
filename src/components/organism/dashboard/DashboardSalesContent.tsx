@@ -1,6 +1,7 @@
 "use client";
 
 import { salesColumns } from "@/components/atoms/datacolumn/DataSales";
+import DialogCreateSales from "@/components/atoms/dialog/DialogCreateSale";
 import SearchInput from "@/components/atoms/search/SearchInput";
 import { DataTable } from "@/components/molecules/datatable/DataTable";
 import { Button } from "@/components/ui/button";
@@ -22,21 +23,26 @@ export default function DashboardSalesContent() {
       sales.medicine.name.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
+  const [DialogSalesOpen, setDialogSalesOpen] = useState(false);
+
+  const handleSalesDialogOpen = () => {
+    setDialogSalesOpen(true);
+  };
+
   return (
     <>
       <div className="py-6 md:space-y-6 space-y-4">
-        <div className="flex justify-between">
+        <div className="flex md:flex-row flex-col justify-between gap-4">
           <SearchInput
             onSearch={setSearchQuery}
             className="min-w-[250px]"
             props="Cari penjualan..."
           />
-          <Link href={"/dashboard/admin/users/create"}>
-            <Button>Buat Penjualan</Button>
-          </Link>
+          <Button onClick={handleSalesDialogOpen}>Buat Penjualan</Button>
         </div>
         <DataTable columns={salesColumns} data={filteredData} />
       </div>
+      <DialogCreateSales open={DialogSalesOpen} setOpen={setDialogSalesOpen} />
     </>
   );
 }

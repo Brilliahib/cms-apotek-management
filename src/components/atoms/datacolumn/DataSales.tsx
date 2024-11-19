@@ -79,19 +79,13 @@ export const salesColumns: ColumnDef<Sales>[] = [
           <DropdownMenuLabel>Action</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link
-              href={`/dashboard/admin/sales/${data.id}/edit`}
-              className="flex items-center text-gray-700"
-            >
+            <Link href={"#"} className="flex items-center text-gray-700">
               <SquarePen className="h-4 w-4" />
               <span className="ml-2">Edit</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link
-              href={`/dashboard/admin/sales/${data.id}`}
-              className="flex items-center text-gray-700"
-            >
+            <Link href={"#"} className="flex items-center text-gray-700">
               <Eye className="h-4 w-4" />
               <span className="ml-2">Detail</span>
             </Link>

@@ -79,19 +79,13 @@ export const medicineColumns: ColumnDef<Medicine>[] = [
           <DropdownMenuLabel>Action</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link
-              href={`/dashboard/admin/medicines/${data.id}/edit`}
-              className="flex items-center text-gray-700"
-            >
+            <Link href={"#"} className="flex items-center text-gray-700">
               <SquarePen className="h-4 w-4" />
               <span className="ml-2">Edit</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link
-              href={`/dashboard/admin/medicines/${data.id}`}
-              className="flex items-center text-gray-700"
-            >
+            <Link href={"#"} className="flex items-center text-gray-700">
               <Eye className="h-4 w-4" />
               <span className="ml-2">Detail</span>
             </Link>

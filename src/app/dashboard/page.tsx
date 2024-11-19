@@ -18,6 +18,11 @@ export default function Dashboard() {
     return null;
   }
 
+  if (session.user.role === "supplier") {
+    router.push("/dashboard/supplier");
+    return null;
+  }
+
   return (
     <>
       <DashboardTitle title="Dashboard" />

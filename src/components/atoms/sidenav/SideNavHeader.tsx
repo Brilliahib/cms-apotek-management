@@ -86,11 +86,6 @@ export default function SideNavHeader({ session, links }: SideNavHeaderProps) {
               <p>{session.user.name}</p>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <Link href="/">
-                <House /> Home
-              </Link>
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive cursor-pointer focus:text-destructive focus:bg-destructive/20"

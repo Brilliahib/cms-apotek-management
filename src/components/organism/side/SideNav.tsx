@@ -17,6 +17,7 @@ import {
   ShoppingCart,
   ShoppingBag,
   Pill,
+  Stethoscope,
 } from "lucide-react";
 import { Session } from "next-auth";
 import SideNavL from "@/components/atoms/sidenav/SideNavL";
@@ -99,6 +100,12 @@ export default function Sidenav({ children, session }: SidenavProps) {
               label: "Obat",
               icon: Pill,
               active: pathname.startsWith("/dashboard/medicines"),
+            },
+            {
+              href: "/dashboard/records",
+              label: "Rekam Medis",
+              icon: Stethoscope,
+              active: pathname.startsWith("/dashboard/records"),
             },
           ]),
       // {

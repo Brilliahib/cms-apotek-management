@@ -30,14 +30,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useCallback, useState } from "react";
-import { Image as ImageIcon, Trash2, Upload as UploadIcon } from "lucide-react";
-import Image from "next/image";
-import {
-  purchaseSchema,
-  PurchaseType,
-} from "@/validators/purchase/purchase-validator";
-import { useAddPurchase } from "@/http/purchases/add-purchase";
 import { useSession } from "next-auth/react";
 import { useGetAllMedicines } from "@/http/medicines/get-all-medicine";
 import {
@@ -87,7 +79,7 @@ export default function DialogCreateMedicalRecord({
         variant: "success",
       });
       queryClient.invalidateQueries({
-        queryKey: ["medical-record-list"],
+        queryKey: ["medical-records"],
       });
       router.refresh();
     },
